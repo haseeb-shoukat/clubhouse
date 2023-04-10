@@ -1,0 +1,12 @@
+extends layout
+
+block content 
+  div.logo-heading CLUBHOUSE
+  div.authentication-heading LOG IN
+  form.authentication-form 
+    label Username/Email
+      input(type="text" name="username-email")
+    label Password 
+      input(type="password")
+    button(type="submit") Log In
+    a(href="/sign-up") Don't have an account? Sign up 
