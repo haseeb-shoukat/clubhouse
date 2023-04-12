@@ -3,18 +3,21 @@ extends layout
 block content 
   div.logo-heading CLUBHOUSE
   div.authentication-heading SIGN UP
-  form.authentication-form 
+  form(action="/sign-up", method="post").authentication-form 
     label First Name 
-      input(type="text" name="first-name")
+      input(type="text" name="first_name" value=(user === undefined ? "": user.first_name))
     label Last Name 
-      input(type="text" name="last-name")
+      input(type="text" name="last_name" value=(user === undefined ? "": user.last_name))
     label Email Address 
-      input(type="email" name="email")
+      input(type="email" name="email" value=(user === undefined ? "": user.email))
     label Username 
-      input(type="text" name="username")
+      input(type="text" name="username" value=(user === undefined ? "": user.username))
     label Password 
-      input(type="password")
+      input(type="password" name="password" value=(user === undefined ? "": user.password))
     label Confirm Password 
-      input(type="password")
+      input(type="password" name="re_password" value=(user === undefined ? "": user.re_password))
     button(type="submit") Sign Up
     a(href="/log-in") Already have an account? Log in 
+    if (errors) 
+      each err in errors
+        li #{err.msg}
